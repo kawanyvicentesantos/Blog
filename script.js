@@ -1,4 +1,4 @@
-// Função chamada ao clicar no botão
+// Função chamada ao clicar no botão de curtir
 function curtirPost(postId) {
     // Busca a quantidade atual de curtidas salvas no navegador
     let curtidas = parseInt(localStorage.getItem('curtidas_' + postId)) || 0;
@@ -15,11 +15,11 @@ function curtirPost(postId) {
     // Salva o novo total de curtidas
     localStorage.setItem('curtidas_' + postId, curtidas);
 
-    // Atualiza a tela
+    // Atualiza a interface da página
     atualizarTela(postId);
 }
 
-// Função para atualizar o número no HTML e o visual do botão
+// Função para atualizar o contador e o texto do botão no HTML
 function atualizarTela(postId) {
     let curtidas = parseInt(localStorage.getItem('curtidas_' + postId)) || 0;
     let jaCurtiu = localStorage.getItem('usuario_curtiu_' + postId) === 'true';
@@ -42,7 +42,7 @@ function atualizarTela(postId) {
     }
 }
 
-// Carrega os números de curtidas ao abrir/recarregar a página
+// Carrega os dados de curtidas assim que o site abre ou recarrega
 document.addEventListener('DOMContentLoaded', () => {
     atualizarTela('post1');
     atualizarTela('post2');
